@@ -11,6 +11,9 @@ const Navigation = ({ onClose }) => (
         <Link to="/available">User Liste</Link>
       </li>
       <li>
+        <Link to="/bar/abrechnung">Bar-Abrechnung</Link>
+      </li>
+      <li>
         <Link to="/wip">Work In Progress</Link>
       </li>
     </ul>
