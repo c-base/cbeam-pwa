@@ -12,3 +12,30 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+
+.video {
+  margin: 20px;
+}
+
+.preview {
+  height: 128px;
+  background-size: 320px 12288px;
+  background-position: 0px 0px;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+  cursor: pointer;
+}
+
+.preview:hover {
+  animation: tile 7680ms steps(96, end) infinite;
+}
+
+@keyframes tile {
+  /* from { */
+  /*   background-position: 0 0px; */
+  /* } */
+  to {
+    background-position: 0 -12288px;
+  }
+}

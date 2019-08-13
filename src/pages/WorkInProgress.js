@@ -1,6 +1,7 @@
 import React from "react";
 
 import BarStatus from "../components/Barstatus";
+import Matelight from "../components/Matelight";
 
 const WorkInProgress = () => (
   <div className="row">
@@ -11,6 +12,8 @@ const WorkInProgress = () => (
       <h3>Bar Status</h3>
       <BarStatus />
       <hr />
+      <h3>Matelight</h3>
+      <Matelight />
     </div>
   </div>
 );
