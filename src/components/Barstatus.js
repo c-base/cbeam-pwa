@@ -1,48 +1,23 @@
-// Based on https://github.com/c-base/c-beam/blob/master/c-beamd/cbeamd/assets/js/barstatus.jsx
-
-import React from "react";
+import React, { useState } from "react";
+import useInterval from "../hooks/useInterval";
 import { getBarstatus } from "../api";
 
-const class_closed = "btn btn-block btn-danger";
-const class_open = "btn btn-block btn-success";
+const class_closed = "label label-warning";
+const class_open = "label label-success";
 
-class BarStatus extends React.Component {
-  state = { isOpen: false };
+function BarStatus() {
+  const [open, setOpen] = useState(false);
 
-  update() {
-    getBarstatus().then(isOpen => this.setState({ isOpen }));
-  }
+  useInterval(() => {
+    getBarstatus().then(isOpen => setOpen(isOpen));
+  }, 10000);
 
-  startUpdating() {
-    this.update(); // do it once and then start it up ...
-    this._timer = setInterval(() => this.update(), 10000); //this.props.pollInterval);
-  }
-
-  componentDidMount() {
-    this.startUpdating();
-  }
-
-  componentWillUnmount() {
-    if (this._timer) {
-      clearInterval(this._timer);
-      this._timer = null;
-    }
-  }
-
-  render() {
-    const className = this.state.isOpen ? class_open : class_closed;
-    return (
-      <div className="row">
-        <div className="col-md-12">
-          <div id="barstatus">
-            <div className={className}>
-              bar {this.state.isOpen ? "open" : "closed"}
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  const className = open ? class_open : class_closed;
+  return (
+    <div id="barstatus">
+      <div className={className}>bar {open ? "open" : "closed"}</div>
+    </div>
+  );
 }
 
 export default BarStatus;
