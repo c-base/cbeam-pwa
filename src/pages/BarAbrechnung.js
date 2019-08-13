@@ -23,47 +23,49 @@ class BarAbrechnung extends React.Component {
     return (
       <div className="row">
         <div className="col-md-12">
-          <table>
-            <thead>
-              <tr>
-                <td>Coin</td>
-                <td>Amount</td>
-                <td>Value</td>
-              </tr>
-            </thead>
-            <tbody>
-              {COINS.map((coin, index) => (
-                <tr key={coin}>
-                  <td align="right">
-                    <Price cents={coin} />
-                  </td>
+          <form>
+            <table>
+              <thead>
+                <tr>
+                  <td>Coin</td>
+                  <td>Amount</td>
+                  <td>Value</td>
+                </tr>
+              </thead>
+              <tbody>
+                {COINS.map((coin, index) => (
+                  <tr key={coin}>
+                    <td align="right">
+                      <Price cents={coin} />
+                    </td>
+                    <td>
+                      <input
+                        type="number"
+                        min="0"
+                        onChange={e => this.handleChange(e, index)}
+                        value={this.state[index] || ""}
+                      />
+                    </td>
+                    <td align="right">
+                      <Price cents={(this.state[index] || 0) * coin} />
+                    </td>
+                  </tr>
+                ))}
+                <tr>
+                  <td> </td>
+                  <td>Sum:</td>
                   <td>
-                    <input
-                      type="number"
-                      min="0"
-                      onChange={e => this.handleChange(e, index)}
-                      value={this.state[index] || ""}
+                    <Price
+                      cents={Object.keys(this.state).reduce(
+                        (p, key) => p + this.state[key] * COINS[key],
+                        0
+                      )}
                     />
                   </td>
-                  <td align="right">
-                    <Price cents={(this.state[index] || 0) * coin} />
-                  </td>
                 </tr>
-              ))}
-              <tr>
-                <td> </td>
-                <td>Sum:</td>
-                <td>
-                  <Price
-                    cents={Object.keys(this.state).reduce(
-                      (p, key) => p + this.state[key] * COINS[key],
-                      0
-                    )}
-                  />
-                </td>
-              </tr>
-            </tbody>
-          </table>
+              </tbody>
+            </table>
+          </form>
         </div>
       </div>
     );
