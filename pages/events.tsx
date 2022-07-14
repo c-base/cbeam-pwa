@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Link from "next/link";
 import { useEvents } from "../api";
-import { Card } from "../components/card";
+import { Card, CardTitle } from "../components/card";
 
 const Home: NextPage = () => {
   const { events } = useEvents();
@@ -13,7 +13,7 @@ const Home: NextPage = () => {
     >
       <Link href="/">
       <Card>
-          <div>Events Today</div>
+          <CardTitle>Events Today</CardTitle>
           {events?.map((event: any) => (
             <>
               <div>{event.title}</div>

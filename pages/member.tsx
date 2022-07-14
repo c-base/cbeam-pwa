@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Link from "next/link";
 import { useMember } from "../api";
-import { Card } from "../components/card";
+import { Card, CardTitle } from "../components/card";
 
 const Home: NextPage = () => {
   const { member } = useMember();
@@ -13,7 +13,7 @@ const Home: NextPage = () => {
     >
       <Link href="/">
         <Card>
-          <div>Member</div>
+          <CardTitle>Member</CardTitle>
           {member?.map((m: any) => (
             <div key={m.username}>
               {m.username} ({m.online_percentage})

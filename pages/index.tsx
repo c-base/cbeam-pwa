@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Link from "next/link";
 import { useMember, useBarstatus, useEvents } from "../api";
-import { Card } from "../components/card";
+import { Card, CardTitle } from "../components/card";
 
 const Home: NextPage = () => {
   const { member } = useMember();
@@ -13,6 +13,7 @@ const Home: NextPage = () => {
         padding: "12px",
       }}
     >
+      <h1>c-beam web interface</h1>
       <div
         style={{
           display: "grid",
@@ -22,7 +23,7 @@ const Home: NextPage = () => {
       >
         <Link href="/member">
           <Card>
-            <div>Member</div>
+            <CardTitle>Member</CardTitle>
             {member?.slice(0, 5).map((m: any) => (
               <div key={m.username}>
                 {m.username} ({m.online_percentage})
@@ -33,7 +34,7 @@ const Home: NextPage = () => {
         </Link>
         <Link href="/events">
           <Card>
-            <div>Events Today</div>
+            <CardTitle>Events Today</CardTitle>
             {events?.map((event: any) => (
               <>
                 <div>{event.title}</div>
@@ -45,7 +46,7 @@ const Home: NextPage = () => {
           </Card>
         </Link>
         <Card variant={status ? "on" : "off"}>
-          <div>Bar</div>
+          <CardTitle>Bar</CardTitle>
           {status ? "open" : "closed"}
         </Card>
       </div>

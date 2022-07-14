@@ -4,6 +4,10 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* color: rgb(153, 153, 153); */
+    background-color: #060606;
 }
 
 a {
@@ -13,4 +17,10 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+h1 {
+  font-family: lucida console,andale mono,courier new,monospace;
+  color: white;
+  font-size: 1.5em;
 }
