@@ -12,7 +12,7 @@ import { Preview, Video } from "../components/matelightVideo";
 const Home: NextPage = () => {
   const { matelight } = useMatelight();
   const { videos } = useMatelightVideos();
-  const currentVideo = videos?.find((video) => video.title === matelight.video);
+  const currentVideo = videos?.find((video) => video.title === matelight?.video);
   console.log({ currentVideo, matelight, videos });
   return (
     <div

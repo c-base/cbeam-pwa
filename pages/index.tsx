@@ -51,9 +51,9 @@ const Home: NextPage = () => {
           {status ? "open" : "closed"}
         </Card>
         <Link href="/matelight">
-          <Card variant={matelight.video ? "on" : "off"}>
+          <Card variant={matelight?.video ? "on" : "off"}>
             <CardTitle>Matelight</CardTitle>
-            {matelight.video || "nothing"} playing
+            {matelight?.video || "nothing"} playing
           </Card>
         </Link>
       </div>
