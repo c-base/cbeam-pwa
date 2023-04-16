@@ -1,12 +1,13 @@
 import type { NextPage } from "next";
 import Link from "next/link";
-import { useMember, useBarstatus, useEvents } from "../api";
+import { useMember, useBarstatus, useEvents, useMatelight } from "../api";
 import { Card, CardTitle } from "../components/card";
 
 const Home: NextPage = () => {
   const { member } = useMember();
   const { status } = useBarstatus();
   const { events } = useEvents();
+  const { matelight } = useMatelight();
   return (
     <div
       style={{
@@ -18,7 +19,7 @@ const Home: NextPage = () => {
         style={{
           display: "grid",
           gridGap: "12px",
-          gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr) )"
+          gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr) )",
         }}
       >
         <Link href="/member">
@@ -49,6 +50,12 @@ const Home: NextPage = () => {
           <CardTitle>Bar</CardTitle>
           {status ? "open" : "closed"}
         </Card>
+        <Link href="/matelight">
+          <Card variant={matelight.video ? "on" : "off"}>
+            <CardTitle>Matelight</CardTitle>
+            {matelight.video || "nothing"} playing
+          </Card>
+        </Link>
       </div>
     </div>
   );
