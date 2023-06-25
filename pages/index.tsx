@@ -9,12 +9,7 @@ const Home: NextPage = () => {
   const { events } = useEvents();
   const { matelight } = useMatelight();
   return (
-    <div
-      style={{
-        padding: "12px",
-      }}
-    >
-      <h1>c-beam web interface</h1>
+    <div>
       <div
         style={{
           display: "grid",
@@ -46,16 +41,16 @@ const Home: NextPage = () => {
             ))}
           </Card>
         </Link>
-        <Card variant={status ? "on" : "off"}>
-          <CardTitle>Bar</CardTitle>
-          {status ? "open" : "closed"}
-        </Card>
         <Link href="/matelight">
           <Card variant={matelight?.video ? "on" : "off"}>
             <CardTitle>Matelight</CardTitle>
             {matelight?.video || "nothing"} playing
           </Card>
         </Link>
+        <Card variant={status ? "on" : "off"}>
+          <CardTitle>Bar</CardTitle>
+          {status ? "open" : "closed"}
+        </Card>
       </div>
     </div>
   );

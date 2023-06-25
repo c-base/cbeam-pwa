@@ -6,18 +6,16 @@ import { Card, CardTitle } from "../components/card";
 const Home: NextPage = () => {
   const { events } = useEvents();
   return (
-    <div
-      style={{
-        padding: "12px",
-      }}
-    >
+    <div>
       <Link href="/">
-      <Card>
+        <Card>
           <CardTitle>Events Today</CardTitle>
           {events?.map((event: any) => (
             <>
               <div>{event.title}</div>
-              <div>{event.start} - {event.end}</div>
+              <div>
+                {event.start} - {event.end}
+              </div>
               <div>{event.description}</div>
             </>
           ))}

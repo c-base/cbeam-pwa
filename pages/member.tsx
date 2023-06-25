@@ -6,11 +6,7 @@ import { Card, CardTitle } from "../components/card";
 const Home: NextPage = () => {
   const { member } = useMember();
   return (
-    <div
-      style={{
-        padding: "12px",
-      }}
-    >
+    <div>
       <Link href="/">
         <Card>
           <CardTitle>Member</CardTitle>

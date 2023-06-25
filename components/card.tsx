@@ -10,6 +10,7 @@ export const Card = styled("div", {
   borderRadius: "8px",
   minWidth: "150px",
   minHeight: "150px",
+  lineHeight: "1.3em",
   variants: {
     variant: {
       on: {
@@ -26,9 +27,9 @@ export const Card = styled("div", {
   },
 });
 
-export const CardTitle = styled('div', {
+export const CardTitle = styled("div", {
   fontSize: "1.2rem",
   marginBottom: "8px",
   fontWeight: "bold",
-  fontFamily: "lucida console,andale mono,courier new,monospace"
-})
+  fontFamily: "lucida console,andale mono,courier new,monospace",
+});

@@ -14,7 +14,9 @@ export function useMember() {
   const { data, error } = useSWR(`${CBEAM_REST_URL}/member`, fetcher);
 
   return {
-    member: data,
+    member: data?.sort(
+      (m1: any, m2: any) => m2.online_percentage - m1.online_percentage
+    ),
     isLoading: !error && !data,
     isError: error,
   };
@@ -50,7 +52,10 @@ export const getMathelightImgUrl = (video: MatelightVideo) =>
   `${MATELIGHT_IMAGE_URL}/${video.thumbnailName}`;
 
 export function useMatelight() {
-  const { data, error } = useSWR(`${CBEAM_REST_URL}/matelight/status/`, fetcher);
+  const { data, error } = useSWR(
+    `${CBEAM_REST_URL}/matelight/status/`,
+    fetcher
+  );
 
   return {
     matelight: data,
