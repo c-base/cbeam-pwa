@@ -50,7 +50,7 @@ export const getMathelightImgUrl = (video: MatelightVideo) =>
   `${MATELIGHT_IMAGE_URL}/${video.thumbnailName}`;
 
 export function useMatelight() {
-  const { data, error } = useSWR(`${MATELIGHT_URL}/getstatus`, fetcher);
+  const { data, error } = useSWR(`${CBEAM_REST_URL}/matelight/status/`, fetcher);
 
   return {
     matelight: data,
@@ -61,7 +61,7 @@ export function useMatelight() {
 
 export function useMatelightVideos() {
   const { data, error } = useSWR<MatelightVideo[]>(
-    `${MATELIGHT_URL}/getvideos`,
+    `${CBEAM_REST_URL}/matelight/`,
     fetcher
   );
 
@@ -73,6 +73,6 @@ export function useMatelightVideos() {
 }
 
 export const playMatelightVideo = async (video: MatelightVideo) => {
-  await fetcher(`${MATELIGHT_URL}/play/${video.title}`);
-  mutate(`${MATELIGHT_URL}/getstatus`);
+  await fetcher(`${CBEAM_REST_URL}/matelight/${video.title}/play/`);
+  mutate(`${CBEAM_REST_URL}/matelight/status/`);
 };
