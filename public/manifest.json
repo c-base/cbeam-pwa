@@ -1,0 +1,28 @@
+{
+    "short_name": "c-beam",
+    "name": "c-beam control",
+    "icons": [
+      {
+        "src": "/c-beam-touch-icon-72-precomposed.png",
+        "type": "image/png",
+        "sizes": "72x72"
+      },
+      {
+        "src": "/c-beam-touch-icon-114-precomposed.png",
+        "type": "image/png",
+        "sizes": "114x114"
+      },
+      {
+        "src": "/c-beam-touch-icon-144-precomposed.png",
+        "type": "image/png",
+        "sizes": "144x144"
+      }
+    ],
+    "id": "/",
+    "start_url": "/",
+    "background_color": "#060606",
+    "display": "standalone",
+    "scope": "/",
+    "theme_color": "#060606",
+    "description": "control for c-beam"
+  }
