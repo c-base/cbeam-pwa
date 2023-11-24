@@ -3,8 +3,6 @@ import useSWR, { mutate } from "swr";
 // const CBEAM_REST_URL = "/api";
 const CBEAM_REST_URL = "https://c-beam.cbrp3.c-base.org/api";
 const CBEAM_RPC_REST_URL = "http://c-flo.cbrp3.c-base.org/rpc";
-const MATELIGHT_URL = "http://matelight.cbrp3.c-base.org/api";
-const MATELIGHT_IMAGE_URL = "http://matelight.cbrp3.c-base.org/assets/thumbs";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const rpcGet = (method: string) =>
@@ -49,7 +47,7 @@ type MatelightVideo = {
 };
 
 export const getMathelightImgUrl = (video: MatelightVideo) =>
-  `${MATELIGHT_IMAGE_URL}/${video.thumbnailName}`;
+  `${CBEAM_REST_URL}/matelight/${video.title}/image/`;
 
 export function useMatelight() {
   const { data, error } = useSWR(
