@@ -2,12 +2,15 @@ import type { NextPage } from "next";
 import Link from "next/link";
 import { useMember, useBarstatus, useEvents, useMatelight } from "../api";
 import { Card, CardTitle } from "../components/card";
+import { useTranslation } from "react-i18next";
 
 const Home: NextPage = () => {
   const { member } = useMember();
   const { status } = useBarstatus();
   const { events } = useEvents();
   const { matelight } = useMatelight();
+  const { t } = useTranslation();
+
   return (
     <div>
       <div
@@ -19,7 +22,7 @@ const Home: NextPage = () => {
       >
         <Link href="/member">
           <Card>
-            <CardTitle>Member</CardTitle>
+            <CardTitle>{t('member.title')}</CardTitle>
             {member?.slice(0, 5).map((m: any) => (
               <div key={m.username}>
                 {m.username} ({m.online_percentage})
@@ -30,7 +33,7 @@ const Home: NextPage = () => {
         </Link>
         <Link href="/events">
           <Card>
-            <CardTitle>Events Today</CardTitle>
+            <CardTitle>{t('events.title')}</CardTitle>
             {events?.map((event: any) => (
               <>
                 <div>{event.title}</div>
@@ -43,13 +46,13 @@ const Home: NextPage = () => {
         </Link>
         <Link href="/matelight">
           <Card variant={matelight?.video ? "on" : "off"}>
-            <CardTitle>Matelight</CardTitle>
-            {matelight?.video || "nothing"} playing
+            <CardTitle>{t('matelight.title')}</CardTitle>
+            {matelight?.video || t('matelight.nothing')} {t('matelight.playing')}
           </Card>
         </Link>
         <Card variant={status ? "on" : "off"}>
-          <CardTitle>Bar</CardTitle>
-          {status ? "open" : "closed"}
+          <CardTitle>{t('bar.title')}</CardTitle>
+          {status ? t('bar.open') : t('bar.closed')}
         </Card>
       </div>
     </div>

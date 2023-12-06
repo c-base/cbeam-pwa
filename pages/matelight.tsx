@@ -8,12 +8,14 @@ import {
 } from "../api";
 import { Card, CardTitle } from "../components/card";
 import { Preview, Video } from "../components/matelightVideo";
+import { useTranslation } from "react-i18next";
 
 const Home: NextPage = () => {
   const { matelight } = useMatelight();
   const { videos } = useMatelightVideos();
   const currentVideo = videos?.find((video) => video.title === matelight?.video);
-  console.log({ currentVideo, matelight, videos });
+  const { t } = useTranslation();
+
   return (
     <div
       style={{
@@ -22,7 +24,7 @@ const Home: NextPage = () => {
     >
       <Link href="/">
         <Card>
-          <CardTitle>Matelight</CardTitle>
+          <CardTitle>{t('matelight.title')}</CardTitle>
           {currentVideo ? (
             <div style={{ display: "flex", justifyContent: "center" }}>
               <Video>
@@ -34,7 +36,7 @@ const Home: NextPage = () => {
                     )}')`,
                   }}
                 ></Preview>
-                playing {currentVideo.title}
+                {t('matleight.playing')} {currentVideo.title}
               </Video>
             </div>
           ) : null}
